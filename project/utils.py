@@ -16,16 +16,13 @@ def get_candidates():
 
 def get_candidate(candidate_id):
     """По заданному id получаем данные о кандидате
-     и возвращаем форматированную строку"""
+     и возвращаем их"""
 
     candidates_data = load_candidates_from_json()
 
-    for item in candidates_data:
-        if candidate_id == item['id']:
-            return f'<img src="https://i.pravatar.cc/150"> ' \
-                   f'<pre>Имя - {item["name"]}\n' \
-                   f'Позиция - {item["position"]}\n' \
-                   f'Навыки - {item["skills"]}</pre>'
+    for candidate in candidates_data:
+        if candidate_id == candidate['id']:
+            return candidate
 
 
 def get_candidates_by_skill(skill_name):
