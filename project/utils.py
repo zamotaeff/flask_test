@@ -1,10 +1,10 @@
 import json
 
 
-def get_data_from_json(json_file='./data/candidates.json'):
+def load_candidates_from_json(path='./data/candidates.json'):
     """Открываем файл и читаем из него данные """
 
-    with open(json_file) as file:
+    with open(path) as file:
         return json.load(file)
 
 
@@ -14,7 +14,7 @@ def get_candidates_list():
 
     pre_format_list = ['<pre>', ]
 
-    candidates_data = get_data_from_json()
+    candidates_data = load_candidates_from_json()
 
     for item in candidates_data:
         format_string = f'Имя - {item["name"]}\nПозиция - {item["position"]}\nНавыки - {item["skills"]}\n\n'
