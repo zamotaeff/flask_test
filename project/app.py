@@ -33,11 +33,13 @@ def page_search(candidate_name):
     return render_template('search.html', items=candidates)
 
 
-@app.route('/skills/<skill>/')
-def page_skills(skill):
+@app.route('/skills/<skill_name>/')
+def page_skills(skill_name):
     """Представление для списка кандидатов, имеющих опеределенный навык"""
 
-    return get_candidates_by_skill(skill)
+    candidates = get_candidates_by_skill(skill_name)
+
+    return render_template('skill.html', items=candidates)
 
 
 app.run()

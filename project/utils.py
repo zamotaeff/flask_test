@@ -27,33 +27,29 @@ def get_candidate(candidate_id):
 
 def get_candidates_by_skill(skill_name):
     """Функция находит всех кандидатов с полем skills
-    и возвращает форматированную строку"""
-
-    candidates_data = load_candidates_from_json()
-
-    pre_format_string = '<pre>'
-
-    for item in candidates_data:
-        if skill_name.lower() in item['skills'] or skill_name.capitalize() in item['skills']:
-            format_string = f'Имя - {item["name"]}\nПозиция - {item["position"]}\nНавыки - {item["skills"]}\n\n'
-
-            pre_format_string += format_string
-
-    pre_format_string += '</pre>'
-
-    return pre_format_string
-
-
-def get_candidates_by_name(candidate_name):
-    """Функция находит кандидата по его имени
-    и возвращает форматированную строку"""
+    и возвращает список"""
 
     candidates_data = load_candidates_from_json()
 
     lst = []
 
     for candidate in candidates_data:
-        if candidate_name in candidate['name'].lower():
+        if skill_name.lower() in candidate['skills']:
+            lst.append(candidate)
+
+    return lst
+
+
+def get_candidates_by_name(candidate_name):
+    """Функция находит совпадение по имени
+    и возвращает список кандидатов"""
+
+    candidates_data = load_candidates_from_json()
+
+    lst = []
+
+    for candidate in candidates_data:
+        if candidate_name.lower() in candidate['name'].lower():
             lst.append(candidate)
 
     return lst
