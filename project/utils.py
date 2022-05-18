@@ -8,20 +8,20 @@ def load_candidates_from_json(path='./data/candidates.json'):
         return json.load(file)
 
 
-def get_candidates_list():
+def get_candidates():
     """Функция форматирует данные
     и оттадет форматированную строку"""
 
-    pre_format_list = ['<pre>', ]
+    pre_format_list = '<pre>'
 
     candidates_data = load_candidates_from_json()
 
     for item in candidates_data:
         format_string = f'Имя - {item["name"]}\nПозиция - {item["position"]}\nНавыки - {item["skills"]}\n\n'
 
-        pre_format_list.append(format_string)
+        pre_format_list += format_string
 
-    pre_format_list.append('</pre>')
+    pre_format_list += '</pre>'
 
     return ''.join(pre_format_list)
 
