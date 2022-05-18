@@ -1,7 +1,7 @@
 import json
 
 
-def load_candidates_from_json(path='./data/candidates.json'):
+def load_candidates_from_json(path='./project/data/candidates.json'):
     """Открываем файл и читаем из него данные """
 
     with open(path) as file:
@@ -9,21 +9,9 @@ def load_candidates_from_json(path='./data/candidates.json'):
 
 
 def get_candidates():
-    """Функция форматирует данные
-    и оттадет форматированную строку"""
+    """"""
 
-    pre_format_string = '<pre>'
-
-    candidates_data = load_candidates_from_json()
-
-    for item in candidates_data:
-        format_string = f'Имя - {item["name"]}\nПозиция - {item["position"]}\nНавыки - {item["skills"]}\n\n'
-
-        pre_format_string += format_string
-
-    pre_format_string += '</pre>'
-
-    return pre_format_string
+    return load_candidates_from_json()
 
 
 def get_candidate(candidate_id):
