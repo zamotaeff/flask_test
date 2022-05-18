@@ -16,10 +16,12 @@ def page_index():
 
 
 @app.route("/candidate/<int:uid>/")
-def page_candidates(uid):
+def page_candidate(uid):
     """Представление для вывода информации о кандидате по его ID"""
 
-    return get_candidate(uid)
+    candidate = get_candidate(uid)
+
+    return render_template('item.html', candidate=candidate)
 
 
 @app.route('/skills/<skill>/')
