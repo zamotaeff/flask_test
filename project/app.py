@@ -9,12 +9,13 @@ app = Flask(__name__)
 @app.route("/")
 def page_index():
     """Представление для списка кандидатов"""
+
     candidates = get_candidates()
 
     return render_template('list.html', items=candidates)
 
 
-@app.route("/candidates/<int:uid>/")
+@app.route("/candidate/<int:uid>/")
 def page_candidates(uid):
     """Представление для вывода информации о кандидате по его ID"""
 
