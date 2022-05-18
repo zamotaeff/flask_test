@@ -24,6 +24,15 @@ def page_candidate(uid):
     return render_template('item.html', candidate=candidate)
 
 
+@app.route("/search/<candidate_name>/")
+def page_search(candidate_name):
+    """Представление для поиска кандидата по его имени"""
+
+    candidates = get_candidates_by_name(candidate_name)
+
+    return render_template('search.html', items=candidates)
+
+
 @app.route('/skills/<skill>/')
 def page_skills(skill):
     """Представление для списка кандидатов, имеющих опеределенный навык"""

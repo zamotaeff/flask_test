@@ -50,14 +50,10 @@ def get_candidates_by_name(candidate_name):
 
     candidates_data = load_candidates_from_json()
 
-    pre_format_string = '<pre>'
+    lst = []
 
-    for item in candidates_data:
-        if candidate_name.lower() in item['skills'] or candidate_name.capitalize() in item['skills']:
-            format_string = f'Имя - {item["name"]}\nПозиция - {item["position"]}\nНавыки - {item["skills"]}\n\n'
+    for candidate in candidates_data:
+        if candidate_name in candidate['name'].lower():
+            lst.append(candidate)
 
-            pre_format_string += format_string
-
-    pre_format_string += '</pre>'
-
-    return pre_format_string
+    return lst
