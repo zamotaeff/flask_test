@@ -26,14 +26,14 @@ def get_candidates_list():
     return ''.join(pre_format_list)
 
 
-def get_candidate_info(uid):
+def get_candidate(candidate_id):
     """По заданному id получаем данные о кандидате
      и возвращаем форматированную строку"""
 
-    candidates_data = get_data_from_json()
+    candidates_data = load_candidates_from_json()
 
     for item in candidates_data:
-        if uid == item['id']:
+        if candidate_id == item['id']:
             return f'<img src="https://i.pravatar.cc/150"> ' \
                    f'<pre>Имя - {item["name"]}\n' \
                    f'Позиция - {item["position"]}\n' \
@@ -44,7 +44,7 @@ def get_candidates_with_skill(skill):
     """Функция находит всех кандидатов с полем skills
     и возвращает форматированную строку"""
 
-    candidates_data = get_data_from_json()
+    candidates_data = load_candidates_from_json()
 
     pre_format_list = ['<pre>', ]
 
